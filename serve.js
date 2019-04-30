@@ -8,6 +8,7 @@ app.get('/api/data', data);
 app.use('/nextjs', proxy({
   target: 'http://localhost:3001',
   changeOrigin: true,
+  pathRewrite: { '^/nextjs': '' }, // e.g. /nextjs/index -> /index
 }));
 app.use('/', proxy({
   target: 'http://localhost:3000',

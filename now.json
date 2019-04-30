@@ -3,10 +3,18 @@
     "name": "nextjs-cra",
     "builds": [
         { "src": "nextjs/package.json", "use": "@now/next" },
+        { "src": "cra/package.json", "use": "@now/static-build", "config": { "distDir": "build" } },
         { "src": "api/data/index.js", "use": "@now/node" }
     ],
     "routes": [
+        { "src": "/static/(.*)", "headers": { "cache-control": "s-maxage=31536000,immutable" }, "dest": "/cra/static/$1" },
+        { "src": "/favicon.ico", "dest": "/cra/favicon.ico" },
+        { "src": "/asset-manifest.json", "dest": "/cra/asset-manifest.json" },
+        { "src": "/manifest.json", "dest": "/cra/manifest.json" },
+        { "src": "/precache-manifest.(.*)", "dest": "/cra/precache-manifest.$1" },
+        { "src": "/service-worker.js", "headers": { "cache-control": "s-maxage=0" }, "dest": "/cra/service-worker.js" },
         { "src": "/api/data", "dest": "/api/data" },
-        { "src": "/(.*)", "dest": "/nextjs/$1" }
+        { "src": "/nextjs/(.*)", "dest": "/nextjs/$1" },
+        { "src": "/", "headers": {"cache-control": "s-maxage=0"}, "dest": "/cra/index.html" }
     ]
 }
