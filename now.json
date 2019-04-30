@@ -15,6 +15,7 @@
         { "src": "/service-worker.js", "headers": { "cache-control": "s-maxage=0" }, "dest": "/cra/service-worker.js" },
         { "src": "/api/data", "dest": "/api/data" },
         { "src": "/nextjs/(.*)", "dest": "/nextjs/$1" },
+        { "src": "/_next/(.*)", "dest": "/nextjs/_next/$1" },
         { "src": "/", "headers": {"cache-control": "s-maxage=0"}, "dest": "/cra/index.html" }
     ]
 }
