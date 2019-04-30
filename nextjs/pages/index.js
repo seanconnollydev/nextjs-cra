@@ -8,7 +8,8 @@ const Index = ({ users }) => (
 
 Index.getInitialProps = async({ req }) => {
   const resp = await axios.get(`http://${req.headers.host}/api/data`);
-  return { users: resp.data };
+  const users = resp.data.map(({ id, firstName }) => ({ id, firstName }));
+  return { users };
 }
 
 export default Index;
