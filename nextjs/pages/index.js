@@ -1,13 +1,14 @@
 import axios from 'axios';
 
-const Index = () => (<div>Next.js</div>);
+const Index = ({ users }) => (
+  <div>{users.map(u => (
+    <div key={u.id}>{u.firstName}</div>
+  ))}</div>
+);
 
 Index.getInitialProps = async({ req }) => {
-  const host = req ? req.headers.host : '';
-  console.log('req.headers.host', req.headers.host);
-  const resp = await axios.get(`http://${host}/api/data`);
-  console.log('resp', resp.data);
-  return {};
+  const resp = await axios.get(`http://${req.headers.host}/api/data`);
+  return { users: resp.data };
 }
 
 export default Index;
