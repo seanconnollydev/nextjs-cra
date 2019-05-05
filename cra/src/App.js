@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { ThemeProvider } from 'mineral-ui/themes';
+import Table from 'mineral-ui/Table';
 
 function App() {
   const [users, setUsers] = useState([]);
@@ -15,9 +17,13 @@ function App() {
   if (users.length === 0) return 'Loading...';
 
   return (
-    <div>{users.map(u => (
-      <div key={u.id}>{u.firstName}</div>
-    ))}</div>
+    <ThemeProvider>
+      <Table
+         data={users}
+         rowKey="id"
+         title="Users"
+         hideTitle />
+     </ThemeProvider>
   );
 }
 
