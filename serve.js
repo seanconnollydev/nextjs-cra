@@ -5,7 +5,7 @@ const app = express();
 const port = 3002;
 
 app.get('/api/data', data);
-app.use('/nextjs', proxy({
+app.use(['/nextjs', '/_next'], proxy({
   target: 'http://localhost:3001',
   pathRewrite: { '^/nextjs': '' }, // e.g. /nextjs/index -> /index
 }));
