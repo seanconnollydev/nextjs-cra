@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import moment from 'moment';
 import { ThemeProvider } from 'mineral-ui/themes';
 import Table from 'mineral-ui/Table';
 
@@ -8,7 +9,13 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       const resp = await axios.get('/api/data');
-      const users = resp.data.map(({ id, FirstName }) => ({ id, FirstName }));
+      const users = resp.data.map(user => {
+        return {
+          id: user.id,
+          FirstName: user.FirstName,
+          DateOfBirth: moment(user.DateOfBirth).format('MMMM Do YYYY'),
+        }
+      });
       setUsers(users);
     };
     fetchData();
