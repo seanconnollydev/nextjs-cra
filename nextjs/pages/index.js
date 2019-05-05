@@ -1,4 +1,5 @@
 import axios from 'axios';
+import moment from 'moment';
 import { ThemeProvider } from 'mineral-ui/themes';
 import Table from 'mineral-ui/Table';
 
@@ -14,7 +15,13 @@ const Index = ({ users }) => (
 
 Index.getInitialProps = async({ req }) => {
   const resp = await axios.get(`http://${req.headers.host}/api/data`);
-  const users = resp.data.map(({ id, FirstName }) => ({ id, FirstName }));
+  const users = resp.data.map(user => {
+    return {
+      id: user.id,
+      FirstName: user.FirstName,
+      DateOfBirth: moment(user.DateOfBirth).format('MMMM Do YYYY'),
+    }
+  });
   return { users };
 }
 
