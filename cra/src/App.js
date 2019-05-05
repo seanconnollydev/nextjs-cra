@@ -21,7 +21,7 @@ function App() {
     fetchData();
   }, []);
 
-  if (users.length === 0) return 'Loading...';
+  if (users.length === 0) return null;
 
   return (
     <ThemeProvider>
