@@ -1,6 +1,6 @@
 import axios from 'axios';
-import Table from 'mineral-ui/Table';
 import { ThemeProvider } from 'mineral-ui/themes';
+import Table from 'mineral-ui/Table';
 
 const Index = ({ users }) => (
   <ThemeProvider>
@@ -14,7 +14,7 @@ const Index = ({ users }) => (
 
 Index.getInitialProps = async({ req }) => {
   const resp = await axios.get(`http://${req.headers.host}/api/data`);
-  const users = resp.data.map(({ id, firstName }) => ({ id, firstName }));
+  const users = resp.data.map(({ id, FirstName }) => ({ id, FirstName }));
   return { users };
 }
 

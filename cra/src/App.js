@@ -8,7 +8,7 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       const resp = await axios.get('/api/data');
-      const users = resp.data.map(({ id, firstName }) => ({ id, firstName }));
+      const users = resp.data.map(({ id, FirstName }) => ({ id, FirstName }));
       setUsers(users);
     };
     fetchData();
