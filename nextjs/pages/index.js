@@ -1,9 +1,15 @@
 import axios from 'axios';
+import Table from 'mineral-ui/Table';
+import { ThemeProvider } from 'mineral-ui/themes';
 
 const Index = ({ users }) => (
-  <div>{users.map(u => (
-    <div key={u.id}>{u.firstName}</div>
-  ))}</div>
+  <ThemeProvider>
+    <Table
+       data={users}
+       rowKey="id"
+       title="Users"
+       hideTitle />
+   </ThemeProvider>
 );
 
 Index.getInitialProps = async({ req }) => {
