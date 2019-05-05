@@ -1,7 +1,7 @@
 module.exports = (req, res) => {
   console.time('api:data');
   let data = [];
-  for (let i=0; i<10000; i++) {
+  for (let i=0; i<1000; i++) {
     data.push({
       id: i,
       firstName: `First_${i}`,
