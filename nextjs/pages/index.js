@@ -1,12 +1,14 @@
 import axios from 'axios';
 import moment from 'moment';
 import { ThemeProvider } from 'mineral-ui/themes';
-import Table from 'mineral-ui/Table';
 import { PrimaryNav, NavItem } from 'mineral-ui/Navigation';
+import Table from 'mineral-ui/Table';
+import Text from 'mineral-ui/Text';
 
 const Index = ({ users }) => (
   <ThemeProvider>
     <div>
+      <Text as="h1">Next.js</Text>
       <PrimaryNav align="left" maxItemWidth="20rem">
         <NavItem href="/">Create React App</NavItem>
         <NavItem href="/nextjs" selected>Next.js</NavItem>

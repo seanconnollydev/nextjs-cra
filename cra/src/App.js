@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import moment from 'moment';
 import { ThemeProvider } from 'mineral-ui/themes';
-import Table from 'mineral-ui/Table';
 import { PrimaryNav, NavItem } from 'mineral-ui/Navigation';
+import Table from 'mineral-ui/Table';
+import Text from 'mineral-ui/Text';
 
 function App() {
   const [users, setUsers] = useState([]);
@@ -29,6 +30,7 @@ function App() {
   return (
     <ThemeProvider>
       <div>
+        <Text as="h1">Create React App</Text>
         <PrimaryNav align="left" maxItemWidth="20rem">
           <NavItem href="/" selected>Create React App</NavItem>
           <NavItem href="/nextjs">Next.js</NavItem>
