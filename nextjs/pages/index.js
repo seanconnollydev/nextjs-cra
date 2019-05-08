@@ -14,7 +14,9 @@ const Index = ({ users }) => (
 );
 
 Index.getInitialProps = async({ req }) => {
+  console.time('nextjs:data');
   const resp = await axios.get(`http://${req.headers.host}/api/data`);
+  console.timeEnd('nextjs:data');
   const users = resp.data.map(user => {
     return {
       id: user.id,

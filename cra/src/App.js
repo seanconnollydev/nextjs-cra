@@ -8,7 +8,9 @@ function App() {
   const [users, setUsers] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
+      console.time('cra:data');
       const resp = await axios.get('/api/data');
+      console.timeEnd('cra:data');
       const users = resp.data.map(user => {
         return {
           id: user.id,
